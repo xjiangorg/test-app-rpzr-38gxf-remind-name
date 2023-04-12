@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-xuin
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-xuin
+    app.kubernetes.io/part-of: test-app-rpzr
+  name: test-component-xuin
+  namespace: build-e2e-benh-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+      app.kubernetes.io/instance: test-component-xuin
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+        app.kubernetes.io/instance: test-component-xuin
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:e2f1d90280e840deb49b37c03f86f3bc
+        name: my-python
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
