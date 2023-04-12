@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: test-component-xuin
+  namespace: build-e2e-benh-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:f8dfe56e15692a8adc4b17c3d9db11158a53246fcc098a99a785f839afc6d91d
+        name: my-python
+        resources: {}
+status: {}
